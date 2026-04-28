@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
+
 set -ev
+
 NEW_HASH=$(sha256sum result/bin/nix | awk '{ print $1 }')
 OLD_HASH=$(grep 'sha256 "' Formula/nix-static.rb | cut -d '"' -f 2 || echo "")
+
 if [ "$NEW_HASH" = "$OLD_HASH" ]; then
   echo "Binary hasn't changed. Skipping update."
   exit 0
 fi
+
 cat <<EOF > Formula/nix-static.rb
 class NixStatic < Formula
   desc "Static build of the Nix CLI"
@@ -16,6 +20,7 @@ class NixStatic < Formula
   def install; bin.install "nix"; end
 end
 EOF
+
 git config user.name "github-actions[bot]"
 git config user.email "github-actions[bot]@users.noreply.github.com"
 git add Formula/nix-static.rb
