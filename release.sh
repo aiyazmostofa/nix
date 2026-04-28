@@ -21,4 +21,10 @@ git config user.email "github-actions[bot]@users.noreply.github.com"
 git add Formula/nix-static.rb
 git commit -m "Update to ${GITHUB_RUN_ID}" || echo "No changes"
 git push
+
 gh release create "${GITHUB_RUN_ID}" result/bin/nix
+
+OLD_RELEASES=$(gh release list --limit 100 | awk '{print $1}' | tail -n +4)
+for TAG in $OLD_RELEASES; do
+  gh release delete "$TAG" --yes --cleanup-tag
+done
