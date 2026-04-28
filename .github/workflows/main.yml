@@ -1,4 +1,4 @@
-name: "Nix Static"
+name: "Main"
 on:
   schedule:
     - cron: '0 0 * * *'
