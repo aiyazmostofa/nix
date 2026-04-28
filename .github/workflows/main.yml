@@ -15,10 +15,10 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - run: nix build nixpkgs#nixStatic
       - name: Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
         run: |
-          chmod +x ./update-formula.sh
-          ./update-formula.sh
-      - uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ github.run_id }}
-          files: result/bin/nix
+          chmod +x ./release.sh
+          ./release.sh
