@@ -10,7 +10,7 @@ if [ "$NEW_VERSION" = "$OLD_VERSION" ]; then
   exit 0
 fi
 
-echo $NEW_VERSION >> version
+echo $NEW_VERSION > version
 
 git config user.name "github-actions[bot]"
 git config user.email "github-actions[bot]@users.noreply.github.com"
