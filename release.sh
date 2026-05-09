@@ -18,7 +18,7 @@ git add version
 git commit -m "Update to $NEW_VERSION" || echo "No changes"
 git push
 
-BLOB="nixStatic-$NEW_VERSION.tar.gz"
+BLOB="nix-$NEW_VERSION.tar.gz"
 rsync -a --copy-unsafe-links result/ result-resolved/
 tar -czvf $BLOB -C result-resolved .
 gh release create "$NEW_VERSION" $BLOB
