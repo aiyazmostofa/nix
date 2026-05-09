@@ -19,5 +19,5 @@ git commit -m "Update to $NEW_VERSION" || echo "No changes"
 git push
 
 BLOB="nixStatic-$NEW_VERSION.tar.gz"
-tar -czvhf $BLOB result/
+tar -czvf $BLOB -C result .
 gh release create "$NEW_VERSION" $BLOB
