@@ -1,2 +1,2 @@
-# homebrew-nix-static
-Static build of the Nix package manager, packaged for a Homebrew tap.
+# nixStatic-dist
+A distribution of the `nixStatic` package.
