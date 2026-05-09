@@ -15,7 +15,7 @@ echo $NEW_VERSION >> version
 git config user.name "github-actions[bot]"
 git config user.email "github-actions[bot]@users.noreply.github.com"
 git add version
-git commit -m "Update to ${GITHUB_RUN_ID}" || echo "No changes"
+git commit -m "Update to $NEW_VERSION" || echo "No changes"
 git push
 
 BLOB="nixStatic-$NEW_VERSION.tar.gz"
