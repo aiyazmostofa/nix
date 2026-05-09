@@ -4,7 +4,7 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 jobs:
-  build:
+  main:
     runs-on: ubuntu-latest
     permissions:
       contents: write
