@@ -13,7 +13,8 @@ jobs:
       - uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: nix build nixpkgs#nixStatic^*
+      - run: nix build nixpkgs#nixStatic^out
+      - run: nix build nixpkgs#nixStatic^man
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
